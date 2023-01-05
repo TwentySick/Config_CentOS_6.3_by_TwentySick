@@ -36,7 +36,7 @@ UUID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 
 </details></br>
 
-- Sau đó chỉnh lại file IPv4 nameserver ở file `/etc/resolv.conf` (Nhớ tạo file backup)
+- Chỉnh lại IPv4 nameserver ở file `/etc/resolv.conf` (Nhớ tạo file backup)
 
 <details>
     <summary>Config</summary>
@@ -49,7 +49,7 @@ nameserver 8.8.4.4
 
 </details></br>
 
-- Tiếp theo, chỉnh lại mirror (repos gì đó) tại `/etc/yum.repos.d/CentOS-Base.repo`. Mình sẽ chỉnh lại baseurl và không dùng mirrorlist, mình sẽ chỉnh baseurl dùng `http://archive.kernel.org/centos-vault/6.3/` và chỉnh mỗi 3 đầu mục là `base`, `updates`, `extras`  (Nhớ tạo file backup)
+- Chỉnh lại mirror (repos gì đó) tại `/etc/yum.repos.d/CentOS-Base.repo`. Mình sẽ chỉnh lại baseurl và không dùng mirrorlist, mình sẽ chỉnh baseurl dùng `http://archive.kernel.org/centos-vault/6.3/` và chỉnh mỗi 3 đầu mục là `base`, `updates`, `extras`  (Nhớ tạo file backup)
 
 <details>
     <summary>Config</summary>
