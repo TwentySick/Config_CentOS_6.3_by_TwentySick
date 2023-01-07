@@ -4,7 +4,7 @@
 
 Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự tìm đi. DIY ngay)
 
-## Summary
+## **Summary**
 - Preparing
 - Config Network and Package Manager
 
@@ -17,7 +17,7 @@ Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package m
 
 ![](/images/After_config_network.png)
 
-<p align="center"><i>(Đây là sau khi mình đã config lại mạng và cài thêm 1 số cái linh tinh)</i></p></br>
+<p align="center"><i>(Đây là sau khi mình đã config lại mạng và cài thêm 1 số cái linh tinh, và thực cũng không có đủ các package hiện đang có đâu)</i></p></br>
 
 - Mặc định máy sẽ không kết nối mạng khi bật lên, nên để dùng mạng khi dùng thì phải config lại ở file `/etc/sysconfig/network-scripts/ifcfg-eth0`, chuyển `ONBOOT` từ `no` thành `yes`
 
@@ -89,4 +89,53 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
 Sau khi config mạng xong, để có thể xài package manager `apt-get` cho giống các họ hàng nhà Debian, mình có thể tìm trên mạng nhưng mình khuyên không nên dùng cái này. Mình sẽ cần cài `sudo`, `ntp` và update cũng như upgrade toàn bộ package đang có
 
+## **Add User to sudoers**
+
 OK, cài `sudo` xong, mình sẽ cần add user thường vào (user được yêu cầu phải tạo khi làm bài LAB)
+Sửa tại file `/etc/sudoers` (Nhớ backup trước khi làm). Trước khi để có thể sửa được file `sudoers`, mình cần cấp quyền ghi cho nó vì mặc định nó ở chỉ có quyền đọc ở user và local (440 - hãy tìm hiểu thêm về cái này để hiểu được các con số có ý nghĩa gì và tác động lên file như thế nào)
+
+```bash
+[root@OSP201 etc]# chmod 640 sudoers
+```
+
+Sau khi cấp quyền ghi, mình sẽ dùng *vim* để sửa file. Mình cần tìm cái `## Allow people in group wheel to run all commands`. Tùy vào việc muốn sử dụng password khi dùng *sudo* hay không mà thêm vào.
+
+- Với việc muốn dùng password (Recommend), sẽ thêm theo cú pháp `yourusername ALL=(ALL) ALL` vào sau dòng đó
+
+<details>
+    <summary>Config</summary>
+
+```
+...
+## Allows people in group wheel to run all commands
+# %wheel    ALL=(ALL)   ALL
+
+yourusername ALL=(ALL) ALL
+
+## Same thing without a password
+...
+```
+
+</details>
+
+- Với việc không muốn dùng password (Not recommend), sẽ thêm theo theo cú pháp `yourusername ALL=(ALL) NOPASSWD:ALL` vào sau dòng đó
+
+<details>
+    <summary>Config</summary>
+    
+```
+...
+## Same thing without a password
+# %wheel    ALL=(ALL)   NOPASSWD:ALL
+
+yourusername ALL=(ALL) NOPASSWD:ALL
+
+## Allows members of the users group to mount and unmount the
+...
+```
+</details></br>
+
+Sau khi sửa file `sudoers`, mình sẽ cần chạy thêm câu lệnh sau để thêm user vào wheel group
+```bash
+usermod -aG wheel yourusername
+```
