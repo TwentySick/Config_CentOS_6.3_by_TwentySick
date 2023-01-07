@@ -5,8 +5,9 @@
 Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự tìm đi. DIY ngay)
 
 ## **Summary**
-- Preparing
-- Config Network and Package Manager
+- [Preparing](#preparing)
+- [Config Network and Package Manager](#config-network-and-package-manager)
+- [Add User to sudoers](#add-user-to-sudoers)
 
 ## **Preparing**
 - Học cách sử dụng `vim` vì trong bộ cài và các thứ của mình, **vim** được cài mặc định chứ ko có **nano** hay **emacs** gì cả
