@@ -92,7 +92,7 @@ Sau khi config mạng xong, để có thể xài package manager `apt-get` cho g
 ## **Add User to sudoers**
 
 OK, cài `sudo` xong, mình sẽ cần add user thường vào (user được yêu cầu phải tạo khi làm bài LAB)
-Sửa tại file `/etc/sudoers` (Nhớ backup trước khi làm). Trước khi để có thể sửa được file `sudoers`, mình cần cấp quyền ghi cho nó vì mặc định nó ở chỉ có quyền đọc ở user và local (440 - hãy tìm hiểu thêm về cái này để hiểu được các con số có ý nghĩa gì và tác động lên file như thế nào)
+Sửa tại file `/etc/sudoers` (Nhớ backup trước khi làm). Trước khi để có thể sửa được file `sudoers`, mình cần cấp quyền ghi cho nó vì mặc định nó ở chỉ có quyền đọc ở user và local (440 - [hãy tìm hiểu thêm](https://en.wikipedia.org/wiki/Chmod) về cái này để hiểu được các con số có ý nghĩa gì và tác động lên file như thế nào)
 
 ```bash
 [root@OSP201 etc]# chmod 640 sudoers
