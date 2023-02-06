@@ -98,7 +98,7 @@ gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 
 </details></br>
 
-Sau khi config mạng xong, để có thể xài package manager `apt-get` cho giống các họ hàng nhà Debian, mình có thể tìm trên mạng nhưng mình khuyên không nên dùng cái này. Mình sẽ cần cài `sudo`, `ntp` và update cũng như upgrade toàn bộ package đang có
+Sau khi config mạng xong, để có thể xài package manager `apt-get` cho giống các họ hàng nhà Debian, mình có thể tìm trên mạng nhưng mình khuyên không nên dùng cái này. Mình sẽ cần cài `sudo`, `ntp` và update cũng như upgrade toàn bộ package đang có. ***Hãy nhớ restart cái service network.***
 
 ## **Add User to sudoers**
 
