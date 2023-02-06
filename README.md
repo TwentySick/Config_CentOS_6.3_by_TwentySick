@@ -1,4 +1,4 @@
-# **Centos 6.3 Minimal**
+# **Centos 6.3 Minimal Configuration By Twenty Sick**
 
 Đây là bài viết quá trình mình học OSP201 tại FPTU cơ sở Hòa Lạc (btw t nguyền rủa cái hệ điều hành này)
 
@@ -9,17 +9,18 @@ Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự
 - [List Package](#list-package)
 - [Config Network and Package Manager](#config-network-and-package-manager)
 - [Add User to sudoers](#add-user-to-sudoers)
+- [Quota](#quota)
 
 ## **Preparing**
 - Học cách sử dụng `vim` vì trong bộ cài và các thứ của mình, **vim** được cài mặc định chứ ko có **nano** hay **emacs** gì cả
 - Rèn luyện kĩ năng **Google Dork** và có sự kiên trì trong việc tra cứu
-- Các package cần có trong môn học mà khi cài default sẽ không có (nên cài từ lúc làm lab 1 để các lab sau đỡ phải cài): `sudo`, `quota`
+- Tập thói quen tạo backup trước khi làm bất cứ thứ gì
 
 ## **List Package**
 *Đây là những package mình cài trong quá trình làm và hoàn thành các bài lab*
 - net-tools (Hỗ trợ cho quá trình config mạng)
 - sudo (Cái này thì quá rõ rồi, thực thi lệnh ở user standard, guest với quyền root)
-- quota (... Btw mình ko biết giải thích gì ...)
+- quota (... Btw mình ko biết nên giải thích nó như nào, nó sẽ can thiệp vào việc mount disk ...)
 
 ## **Config network and Package Manager**
 Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package manager `yum` của CentOS (do sau khi cài xong, cái hệ điều hành này trắng trơn, kể cả `sudo` - khá giống khi cài Arch by hand - và có nhiều package được cài mặc định đã bị lỗi thời nên mình phải update hết):
@@ -28,7 +29,7 @@ Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package m
 
 <p align="center"><i>(Đây là sau khi mình đã config lại mạng và cài thêm 1 số cái linh tinh, và thực cũng không có đủ các package hiện đang có đâu)</i></p></br>
 
-- Mặc định máy sẽ không kết nối mạng khi bật lên, nên để dùng mạng khi dùng thì phải config lại ở file `/etc/sysconfig/network-scripts/ifcfg-eth0`, chuyển `ONBOOT` từ `no` thành `yes`
+- Mặc định máy sẽ không kết nối mạng khi bật lên, nên để dùng mạng khi dùng thì phải config lại ở file `/etc/sysconfig/network-scripts/ifcfg-eth0` (tùy vào thiết bị mà tên nó sẽ khác nhau, để check thì dùng `ifconfig`), chuyển `ONBOOT` từ `no` thành `yes`
 
 <details>
     <summary> Config </summary>
@@ -154,10 +155,10 @@ chmod 440 sudoers
 Sau đó, mình cần chạy thêm câu lệnh sau để thêm user vào wheel group
 
 ```bash
-usermod -aG wheel yourusername
+usermod -aG wheel <yourusername>
 ```
 
-## Quota
+## **Quota**
 
 Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root** (Lệnh này sẽ tạm thời vô hiệu hóa SELinux - 1 chính sách bảo mật của Linux - btw lệnh kia là chuyển chế độ từ ***Enforcing*** thành ***Permissive***, bật lại chế độ ***Enforcing*** bằng cách thay số ***0*** thành số ***1***. Đọc thêm [tại đây](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/getting-started-with-selinux_using-selinux)
 
