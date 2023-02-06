@@ -12,7 +12,7 @@ Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự
 ## **Preparing**
 - Học cách sử dụng `vim` vì trong bộ cài và các thứ của mình, **vim** được cài mặc định chứ ko có **nano** hay **emacs** gì cả
 - Rèn luyện kĩ năng **Google Dork** và có sự kiên trì trong việc tra cứu
-- Các package cần có trong môn học mà khi cài default sẽ không có: sudo, quota
+- Các package cần có trong môn học mà khi cài default sẽ không có (nên cài từ lúc làm lab 1 để các lab sau đỡ phải cài): `sudo`, `quota`
 
 ## **Config network and Package Manager**
 Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package manager `yum` của CentOS (do sau khi cài xong, cái hệ điều hành này trắng trơn, kể cả `sudo` - khá giống khi cài Arch by hand - và có nhiều package được cài mặc định đã bị lỗi thời nên mình phải update hết):
