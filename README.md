@@ -6,6 +6,7 @@ Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự
 
 ## **Summary**
 - [Preparing](#preparing)
+- [List Package](#list-package)
 - [Config Network and Package Manager](#config-network-and-package-manager)
 - [Add User to sudoers](#add-user-to-sudoers)
 
@@ -13,6 +14,12 @@ Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự
 - Học cách sử dụng `vim` vì trong bộ cài và các thứ của mình, **vim** được cài mặc định chứ ko có **nano** hay **emacs** gì cả
 - Rèn luyện kĩ năng **Google Dork** và có sự kiên trì trong việc tra cứu
 - Các package cần có trong môn học mà khi cài default sẽ không có (nên cài từ lúc làm lab 1 để các lab sau đỡ phải cài): `sudo`, `quota`
+
+## **List Package**
+*Đây là những package mình cài trong quá trình làm và hoàn thành các bài lab*
+- net-tools (Hỗ trợ cho quá trình config mạng)
+- sudo (Cái này thì quá rõ rồi, thực thi lệnh ở user standard, guest với quyền root)
+- quota (... Btw mình ko biết giải thích gì ...)
 
 ## **Config network and Package Manager**
 Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package manager `yum` của CentOS (do sau khi cài xong, cái hệ điều hành này trắng trơn, kể cả `sudo` - khá giống khi cài Arch by hand - và có nhiều package được cài mặc định đã bị lỗi thời nên mình phải update hết):
@@ -28,6 +35,7 @@ Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package m
 
 ```
 DEVICE="eth0"
+IPADDR=xxx.xxx.xxx.xxx
 BOOTPROTO="dhcp"
 HWADDR="xx:xx:xx:xx:xx:xx"
 NM_CONTROLLED="yes"
@@ -97,7 +105,7 @@ OK, cài `sudo` xong, mình sẽ cần add user thường vào (user được y�
 Sửa tại file `/etc/sudoers` (Nhớ backup trước khi làm). Trước khi để có thể sửa được file `sudoers`, mình cần cấp quyền ghi cho nó vì mặc định nó ở chỉ có quyền đọc ở user và local (440 - [hãy tìm hiểu thêm](https://en.wikipedia.org/wiki/Chmod) về cái này để hiểu được các con số có ý nghĩa gì và tác động lên file như thế nào)
 
 ```bash
-[root@OSP201 etc]# chmod 640 sudoers
+chmod 640 sudoers
 ```
 
 Sau khi cấp quyền ghi, mình sẽ dùng *vim* để sửa file. Mình cần tìm cái `## Allow people in group wheel to run all commands`. Tùy vào việc muốn sử dụng password khi dùng *sudo* hay không mà thêm vào.
@@ -151,7 +159,7 @@ usermod -aG wheel yourusername
 
 ## Quota
 
-Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root**
+Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root** (Lệnh này sẽ tạm thời vô hiệu hóa SELinux - 1 chính sách bảo mật của Linux - btw lệnh kia là chuyển chế độ từ ***Enforcing*** thành ***Permissive***, bật lại chế độ ***Enforcing*** bằng cách thay số ***0*** thành số ***1***. Đọc thêm [tại đây](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/getting-started-with-selinux_using-selinux)
 
 ```bash
 setenforce 0
