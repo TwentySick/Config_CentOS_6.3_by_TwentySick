@@ -162,7 +162,7 @@ usermod -aG wheel <yourusername>
 
 ## **Quota**
 
-Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root** (Lệnh này sẽ tạm thời vô hiệu hóa SELinux - 1 chính sách bảo mật của Linux - btw lệnh kia là chuyển chế độ từ ***Enforcing*** thành ***Permissive***, bật lại chế độ ***Enforcing*** bằng cách thay số ***0*** thành số ***1***. Đọc thêm [tại đây](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/getting-started-with-selinux_using-selinux)
+Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root** (Lệnh này sẽ tạm thời vô hiệu hóa SELinux - 1 chính sách bảo mật của Linux - btw lệnh kia là chuyển chế độ từ ***Enforcing*** thành ***Permissive***, bật lại chế độ ***Enforcing*** bằng cách thay số ***0*** thành số ***1***. Đọc thêm [tại đây](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/using_selinux/getting-started-with-selinux_using-selinux) )
 
 ```bash
 setenforce 0
