@@ -137,14 +137,22 @@ yourusername ALL=(ALL) NOPASSWD:ALL
 ```
 </details></br>
 
-Sau khi sửa file `sudoers`, mình sẽ phải tắt quyền ghi của file `sudoers`
+Sau khi sửa file `sudoers`, mình sẽ phải tắt quyền ghi của file `sudoers` (Nhớ chạy dưới quyền **root**)
 
 ```bash
-[root@OSP201 etc]# chmod 440 sudoers
+chmod 440 sudoers
 ```
 
 Sau đó, mình cần chạy thêm câu lệnh sau để thêm user vào wheel group
 
 ```bash
 usermod -aG wheel yourusername
+```
+
+## Quota
+
+Nếu dùng `quotacheck -cug` bị lỗi thì hãy chạy lệnh sau dưới quyền **root**
+
+```bash
+setenforce 0
 ```
