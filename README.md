@@ -23,6 +23,8 @@ Phiên bản mình cài là `CentOS 6.3 Minimal x86_64` (Bộ cài á? Hãy tự
 - quota (... Btw mình ko biết nên giải thích nó như nào, nó sẽ can thiệp vào việc mount disk ...)
 - mysql-server
 - httpd
+- telnet
+- sendmail sendmail-cf
 
 ## **Config network and Package Manager**
 Sau khi cài CentOS 6.3 bản Minimal, để dùng được mạng và package manager `yum` của CentOS (do sau khi cài xong, cái hệ điều hành này trắng trơn, kể cả `sudo` - khá giống khi cài Arch by hand - và có nhiều package được cài mặc định đã bị lỗi thời nên mình phải update hết):
